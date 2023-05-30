@@ -130,6 +130,12 @@
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="contraseña.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="LOGIN.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="modificar.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -142,7 +148,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="contraseña.cpp" />
     <ClCompile Include="CppCLR_WinFormsProject.cpp" />
+    <ClCompile Include="LOGIN.cpp" />
     <ClCompile Include="modificar.cpp" />
     <ClCompile Include="Vehiculo.cpp" />
     <ClCompile Include="Form1.cpp" />
@@ -167,8 +175,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="contraseña.resx">
+      <DependentUpon>contraseña.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LOGIN.resx">
+      <DependentUpon>LOGIN.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modificar.resx">
       <DependentUpon>modificar.h</DependentUpon>

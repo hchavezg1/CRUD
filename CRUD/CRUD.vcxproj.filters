@@ -35,6 +35,12 @@
     <ClInclude Include="modificar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LOGIN.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="contraseña.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinFormsProject.cpp">
@@ -53,6 +59,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="modificar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LOGIN.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="contraseña.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -7,15 +7,18 @@ using namespace System;
 //    return 0;
 // }
 
-#include "Form1.h"
+#include "LOGIN.h" 
+
+
 
 using namespace System::Windows::Forms;
+
 
 [STAThread]
 int main()
 {
   Application::EnableVisualStyles();
   Application::SetCompatibleTextRenderingDefault(false);
-  Application::Run(gcnew CppCLRWinFormsProject::Form1());
+  Application::Run(gcnew CRUD::LOGIN());
   return 0;
 }

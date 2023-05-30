@@ -1,3 +1,4 @@
+//CREAMOS UN CPP PARA LOS SIGUIENTES CONSTRUCTORES//
 #include "pch.h"
 #include "VEHICULO.h"
 
@@ -75,8 +76,8 @@ VEHICULO::VEHICULO()
 
 	}
 
-	void VEHICULO::Eliminar(String^ NOMBRE) {
-		String^ sql = "delete from vehiculos where NOMBRE = '" + NOMBRE + "'";
+	void VEHICULO::Eliminar(String^ CODIGO) {
+		String^ sql = "delete from vehiculos where CODIGO = '" + CODIGO + "'";
 		MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
 		try
 		{
@@ -99,4 +100,5 @@ VEHICULO::VEHICULO()
 		}
 	}
 
-	 
+	
+	

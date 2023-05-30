@@ -227,7 +227,7 @@ namespace CRUD {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::GradientInactiveCaption;
+			this->BackColor = System::Drawing::Color::Teal;
 			this->ClientSize = System::Drawing::Size(365, 323);
 			this->Controls->Add(this->txt_Codigo);
 			this->Controls->Add(this->label6);
@@ -245,6 +245,7 @@ namespace CRUD {
 			this->Name = L"modificar";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"modificar";
+			this->Load += gcnew System::EventHandler(this, &modificar::modificar_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -258,6 +259,8 @@ private: System::Void btn_guardar_Click(System::Object^ sender, System::EventArg
 	this->Close();
 }
 private: System::Void txt_Codigo_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void modificar_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

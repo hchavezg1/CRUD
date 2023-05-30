@@ -17,9 +17,10 @@ public:
 	VEHICULO();
 
 	//CREAMOS LOS METODOS PUBLICOS//
-	DataTable^ getData();
+	DataTable^ getData(); //PARA HACER MODIFICACIONES EN LA BASE DE DATOS//
 	void AbrirConexion();
 	void CerrarConexion();
+	
 	void Insertar(String^, String^, String^, String^, String^);
 	void Modificar(String^, String^, String^, String^, String^, String^);
 	void Eliminar(String^);

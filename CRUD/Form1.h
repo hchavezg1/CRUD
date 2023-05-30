@@ -93,6 +93,7 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::TextBox^ txt_serie;
 	private: System::Windows::Forms::Button^ btn_borrar;
+	private: System::Windows::Forms::Button^ button2;
 
 
 
@@ -139,6 +140,7 @@ namespace CppCLRWinFormsProject {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->txt_serie = (gcnew System::Windows::Forms::TextBox());
 			this->btn_borrar = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_grid))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -234,7 +236,8 @@ namespace CppCLRWinFormsProject {
 			this->btn_guardar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->btn_guardar->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->btn_guardar->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btn_guardar->FlatAppearance->BorderSize = 0;
+			this->btn_guardar->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_guardar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btn_guardar->ForeColor = System::Drawing::Color::White;
@@ -303,7 +306,7 @@ namespace CppCLRWinFormsProject {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(103, 38);
 			this->button1->TabIndex = 12;
-			this->button1->Text = L"<Salir>...";
+			this->button1->Text = L"Salir... >";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click_1);
 			// 
@@ -346,7 +349,9 @@ namespace CppCLRWinFormsProject {
 			// btn_borrar
 			// 
 			this->btn_borrar->BackColor = System::Drawing::Color::Red;
-			this->btn_borrar->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btn_borrar->FlatAppearance->BorderColor = System::Drawing::Color::Black;
+			this->btn_borrar->FlatAppearance->BorderSize = 0;
+			this->btn_borrar->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_borrar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold));
 			this->btn_borrar->ForeColor = System::Drawing::Color::White;
 			this->btn_borrar->Location = System::Drawing::Point(12, 380);
@@ -357,12 +362,28 @@ namespace CppCLRWinFormsProject {
 			this->btn_borrar->UseVisualStyleBackColor = false;
 			this->btn_borrar->Click += gcnew System::EventHandler(this, &Form1::button2_Click);
 			// 
+			// button2
+			// 
+			this->button2->BackColor = System::Drawing::Color::White;
+			this->button2->FlatAppearance->BorderSize = 0;
+			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button2->Location = System::Drawing::Point(373, 381);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(103, 38);
+			this->button2->TabIndex = 17;
+			this->button2->Text = L"< Regresar";
+			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &Form1::button2_Click_1);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Teal;
 			this->ClientSize = System::Drawing::Size(874, 487);
+			this->Controls->Add(this->button2);
 			this->Controls->Add(this->btn_borrar);
 			this->Controls->Add(this->txt_serie);
 			this->Controls->Add(this->label3);
@@ -380,8 +401,9 @@ namespace CppCLRWinFormsProject {
 			this->Controls->Add(this->txt_año);
 			this->Controls->Add(this->txt_nombre);
 			this->Controls->Add(this->txt_codigo);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"Form1";
-			this->Text = L"Form1";
+			this->Text = L"VEHICULOS";
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->data_grid))->EndInit();
 			this->ResumeLayout(false);
@@ -417,13 +439,15 @@ private: System::Void btn_buscar_Click(System::Object^ sender, System::EventArgs
 	this->data->AbrirConexion();
 	this->ConnectionString = "datasource=localhost; username=root; password=hugoch97; database=vehiculo;";
 	this->conn = gcnew MySqlConnection(this->ConnectionString);
-	String^ sql = "Select * from vehiculos where NOMBRE='" + txt_buscar->Text + "'";
+	String^ sql = "Select * from vehiculos where NOMBRE='" + txt_buscar->Text + "' ";
 	MySqlDataAdapter^ data = gcnew MySqlDataAdapter(sql, this->conn);
 	DataTable^ tabla = gcnew DataTable();
 	data->Fill(tabla);
 	data_grid->DataSource = tabla;
 	MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
 	this->data->CerrarConexion();
+
+	
 	}
 	
 
@@ -461,11 +485,14 @@ private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^
 	this->Close();
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ NOMBRE = Convert::ToString(data_grid->SelectedRows[0]->Cells[1]->Value);
+	String^ CODIGO = Convert::ToString(data_grid->SelectedRows[0]->Cells[0]->Value);
 	VEHICULO^ data = gcnew VEHICULO();
 	data->AbrirConexion();
-	data->Eliminar(NOMBRE);
+	data->Eliminar(CODIGO);
 	data->CerrarConexion();
+	this->Consulta();
+}
+private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	this->Consulta();
 }
 };
