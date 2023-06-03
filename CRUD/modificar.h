@@ -251,9 +251,12 @@ namespace CRUD {
 
 		}
 #pragma endregion
+
+		//EVENTO QUE NOS PERMITE CERRAR LA VENTANA DE MODIFICAR UN REGISTRO//
 	private: System::Void btn_cancelar_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
+		   //EVENTO QUE NOS PERMITE MOSTRAR UN MENSAJE EN PANTALLA AL GUARDAR UN RESGISTRO//
 private: System::Void btn_guardar_Click(System::Object^ sender, System::EventArgs^ e) {
 	MessageBox::Show(L"¡MODIFICADO CORRECTAMENTE!");
 	this->Close();

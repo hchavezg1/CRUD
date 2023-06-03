@@ -186,6 +186,8 @@ namespace CRUD {
 #pragma endregion
 	private: System::Void LOGIN_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
+
+		   //EVENTO QUE NOS PERMITE INICIAR SESION CON USUARIO Y CONTRASENA//
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		
 		String^ sql = "select * from usuarios where USUARIO= '" + txt_usuario->Text + "' and CONTRASEÑA = '" + txt_contraseña->Text + "'";

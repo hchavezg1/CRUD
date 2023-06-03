@@ -9,18 +9,20 @@ using namespace MySql::Data::MySqlClient;
 ref class VEHICULO
 {
 private:
-	//CREAMOS LAS VARIABLES PUBLICAS//
-	String^ ConnectionString;
-	MySqlConnection^ conn;
+	//CREAMOS LOS ATRIBUTOS  PRIVADOS//
+	String^ ConnectionString; //CADENA DE CONEXIION 
+	MySqlConnection^ conn; // CREA LA CONEXION CON MYSQL
 	
 public:
-	VEHICULO();
+	VEHICULO();//METODO CONSTRUCTOR
 
 	//CREAMOS LOS METODOS PUBLICOS//
 	DataTable^ getData(); //PARA HACER MODIFICACIONES EN LA BASE DE DATOS//
-	void AbrirConexion();
-	void CerrarConexion();
+	void AbrirConexion(); //ABRE CONEXION CON LA BASE DE DATOS
+	void CerrarConexion(); //CIERRA CONEXION CON LA BASE DE DATOS
 	
+
+	//NETODOS PARA INSERTAR MODIFICAR Y ELIMINAR UN REGISTRO//
 	void Insertar(String^, String^, String^, String^, String^);
 	void Modificar(String^, String^, String^, String^, String^, String^);
 	void Eliminar(String^);

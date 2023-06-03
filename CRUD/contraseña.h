@@ -123,6 +123,8 @@ namespace CRUD {
 
 		}
 #pragma endregion
+
+		//EVENTO QUE NOS PERMITE MOSTRAR UN MENSAJE EN PANTALLA//
 	private: System::Void btn_Guardar_Click(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show("Contraseña Modificada");
 		this->Close();

@@ -1,6 +1,6 @@
 #pragma once
-#include "VEHICULO.h"
-#include "modificar.h"
+#include "VEHICULO.h" // INCLUIMOS LA CLASE VEHICULO //
+#include "modificar.h" //INCLUIMOS LA CLASE MODIFICAR//
 
 
 
@@ -77,7 +77,7 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ lbl_serie;
 	private: System::Windows::Forms::Button^ btn_guardar;
-	private: VEHICULO^ data;
+	private: VEHICULO^ data;   //CREAMOS EL OBJETO VEHICULO^DATA//
 	private: System::Windows::Forms::Label^ lbl_nombre;
 	private: System::Windows::Forms::TextBox^ txt_marca;
 
@@ -411,12 +411,12 @@ namespace CppCLRWinFormsProject {
 
 		}
 #pragma endregion
-		//Evento cargar formualrio nos mostrara al ejecutar el programa los datos en el data_grid que estan en la base de datos//
+		//EVENTO QUE NOS MUESTRA LOS REGISTROS EN EL DATAGRID AL ABRIR EL FORMULARIO//
 	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
 		
 		this->Consulta();
 	}
-		   // metodo consulta nos permitira ingresar los datos de la base de datos al data_grid//
+
 		   public: void Consulta()
 		   {
 			   this->data->AbrirConexion();// abre la conexion con la base de datos//
@@ -424,7 +424,7 @@ namespace CppCLRWinFormsProject {
 			   this->data->CerrarConexion();//cerramos la conexion con la base de dataos//
 		   }
 
-			//Evento click en el boton guardar nos permite ingresar los datos que estan en las cajas de texto a la base de datos//
+			//EVENTO QUE NOS PERMITE INSERTAR UN REGISTRO EN LA BASE DE DATOS//
 private: System::Void btn_guardar_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->data->AbrirConexion();
 	this->data->Insertar(this->txt_codigo->Text, this->txt_nombre->Text, this->txt_año->Text, this->txt_marca->Text, this->txt_serie->Text); // aca es donde se insertan los datos a la base de datos//
@@ -452,7 +452,7 @@ private: System::Void btn_buscar_Click(System::Object^ sender, System::EventArgs
 	
 
 
-		
+		//EVENTO QUE NOS PERMITE MODIFICAR UN REGISTRO//
 private: System::Void data_grid_DoubleClick(System::Object^ sender, System::EventArgs^ e) {
 	String^ CODIGO = Convert::ToString(data_grid->SelectedRows[0]->Cells[0]->Value);
 	String^ NOMBRE = Convert::ToString(data_grid->SelectedRows[0]->Cells[1]->Value);
@@ -480,10 +480,14 @@ private: System::Void data_grid_CellContentClick(System::Object^ sender, System:
 }
 private: System::Void txt_buscar_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
+
+	   //EVENTO QUE NOS PERMITE CERRAR EL PROGRAMA//
 private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
 
 	this->Close();
 }
+
+	   //EVENTO QUE NOS PERMITE ELIMINAR UN REGISTRO EN LA BASE DE DATOS 
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ CODIGO = Convert::ToString(data_grid->SelectedRows[0]->Cells[0]->Value);
 	VEHICULO^ data = gcnew VEHICULO();
@@ -492,6 +496,8 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	data->CerrarConexion();
 	this->Consulta();
 }
+
+	   //EVENTO QUE NOS PERMITE REFRESCAR EL REGISTRO DE BUSQUEDA//
 private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	this->Consulta();
 }
