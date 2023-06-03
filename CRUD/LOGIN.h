@@ -213,7 +213,7 @@ namespace CRUD {
 			}
 			else
 			{
-				MessageBox::Show(L"Usuario incorrecto");
+				MessageBox::Show(L"Usuario o contraseña incorrecto");
 				
 			}
 			this->conn->Close();

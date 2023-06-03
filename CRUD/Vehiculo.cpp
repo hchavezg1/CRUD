@@ -36,9 +36,9 @@ VEHICULO::VEHICULO()
 		return tabla;
 	}
 
-	void VEHICULO::Insertar(String^c, String^n, String^a, String^m, String^s ) //METODO PARA INSERTAR DATOS EN LA BASE DE DATOS//
+	void VEHICULO::Insertar( String^n, String^a, String^m, String^s ) //METODO PARA INSERTAR DATOS EN LA BASE DE DATOS//
 	{
-		String^ sql = "insert into vehiculos(codigo, nombre, año, marca, serie) values ('"+c+"', '"+n+"','"+a+"', '"+m+"', '"+s+"')";
+		String^ sql = "insert into vehiculos(nombre, año, marca, serie) values ( '"+n+"','"+a+"', '"+m+"', '"+s+"')";
 		MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
 		try
 		{
