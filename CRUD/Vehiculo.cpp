@@ -9,7 +9,7 @@
 VEHICULO::VEHICULO()
 {
 	// DECLARAMOS LOS SIGUIENTES OBJETOS PARA CONECTAR EL FORMULARIO CON LA BASE DE DATOS//
-	this->ConnectionString = "datasource=localhost; username=root; password=hugoch97; database=vehiculo;";
+	this->ConnectionString = "datasource=localhost; username=root; password=hugoch97; database=colegio;";
 	this->conn = gcnew MySqlConnection(this->ConnectionString);     
 }
 
@@ -28,7 +28,7 @@ VEHICULO::VEHICULO()
 
 	DataTable^ VEHICULO::getData() //METODO PARA CAPTURAR DATOS DE LA BASE DE DATOS//
 	{
-		String^ sql = "Select * from vehiculos"; //SELECCIONAMOS LA TABLA DE DATOS TAL CUAL LA TENEMOS EN LA BASE DE DATOS//
+		String^ sql = "Select * from estudiantes"; //SELECCIONAMOS LA TABLA DE DATOS TAL CUAL LA TENEMOS EN LA BASE DE DATOS//
 		MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn); 
 		MySqlDataAdapter^ data = gcnew MySqlDataAdapter(cursor); //ADAPTADOR DE DATOS//
 		DataTable^ tabla = gcnew DataTable(); 
@@ -36,10 +36,13 @@ VEHICULO::VEHICULO()
 		return tabla;
 	}
 
-	void VEHICULO::Insertar( String^n, String^a, String^m, String^s ) //METODO PARA INSERTAR DATOS EN LA BASE DE DATOS//
+	void VEHICULO::Insertar( String^n, String^e, String^g, String^no, String^p, String^f, String^d, String^p2 ) //METODO PARA INSERTAR DATOS EN LA BASE DE DATOS//
 	{
-		String^ sql = "insert into vehiculos(nombre, año, marca, serie) values ( '"+n+"','"+a+"', '"+m+"', '"+s+"')";
+		String^ sql = "insert into estudiantes(nombre, edad, genero, calculo, proceso, fisica, derecho, programacion) values ( '"+n+"','"+e+"', '"+g+"', '"+no+"', '" + p + "', '" + f + "', '" + d + "', '" + p2 + "' )";
 		MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
+		MySqlDataReader^ dataReader;
+
+
 		try
 		{
 			cursor->ExecuteNonQuery();
@@ -54,9 +57,9 @@ VEHICULO::VEHICULO()
 		}
 	}
 
-	void VEHICULO::Modificar(String^ c, String^n, String^ a, String^ m, String^ s, String^ ref) //METODO PARA MODIFICAR DATOS EN LA BASE DE DATOS//
+	void VEHICULO::Modificar(String^ i, String^n, String^ e, String^ g, String^ no, String^ p, String^ f, String^ d, String^ p2, String^ ref) //METODO PARA MODIFICAR DATOS EN LA BASE DE DATOS//
 	{
-		String^ sql = "update vehiculos set CODIGO='" + c + "', NOMBRE = '" + n + "',  AÑO = '" + a + "', MARCA = '" + m + "', SERIE = '" + s + "' where CODIGO = '" + ref + "'";
+		String^ sql = "update estudiantes set idestudiantes='" + i + "', NOMBRE = '" + n + "',  EDAD = '" + e + "', GENERO = '" + g + "', CALCULO= '" + n + "', PROCESO= '" + p + "', FISICA= '" + f + "', DERECHO= '" + d + "', PROGRAMACION= '" + p2 + "' where idestudiantes = '" + ref + "'";
 		MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
 			try
 		{
@@ -76,9 +79,9 @@ VEHICULO::VEHICULO()
 
 	}
 
-	void VEHICULO::Eliminar(String^ CODIGO)  //METODO PARA ELIMINAR UN REGISTRO EN LA BASE DE DATOS//
+	void VEHICULO::Eliminar(String^ idestudiantes)  //METODO PARA ELIMINAR UN REGISTRO EN LA BASE DE DATOS//
 	{
-		String^ sql = "delete from vehiculos where CODIGO = '" + CODIGO + "'";
+		String^ sql = "delete from estudiantes where idestudiantes = '" + idestudiantes + "'";
 		MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
 		try
 		{

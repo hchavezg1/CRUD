@@ -23,8 +23,8 @@ public:
 	
 
 	//NETODOS PARA INSERTAR MODIFICAR Y ELIMINAR UN REGISTRO//
-	void Insertar( String^, String^, String^, String^);
-	void Modificar(String^, String^, String^, String^, String^, String^);
+	void Insertar( String^, String^, String^, String^, String^, String^, String^, String^);
+	void Modificar(String^, String^, String^, String^, String^, String^, String^, String^, String^, String^);
 	void Eliminar(String^);
 	
 	

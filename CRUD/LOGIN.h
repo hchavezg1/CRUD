@@ -177,7 +177,7 @@ namespace CRUD {
 			this->Controls->Add(this->label1);
 			this->Name = L"LOGIN";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"LOGIN";
+			this->Text = L" ";
 			this->Load += gcnew System::EventHandler(this, &LOGIN::LOGIN_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -189,10 +189,15 @@ namespace CRUD {
 
 		   //EVENTO QUE NOS PERMITE INICIAR SESION CON USUARIO Y CONTRASENA//
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		
+		if (txt_usuario->Text == "") {
+
+			MessageBox::Show("El usuario esta vacio");
+			return;
+		}
 		String^ sql = "select * from usuarios where USUARIO= '" + txt_usuario->Text + "' and CONTRASEÑA = '" + txt_contraseña->Text + "'";
 		MySqlCommand^ cursor = gcnew MySqlCommand(sql, conn);
-		MySqlDataReader^ dataReader;
+		MySqlDataReader^ dataReader; 
+		
 		
 		try {
 			
@@ -207,8 +212,8 @@ namespace CRUD {
 				this->Hide();
 				MessageBox::Show(L"Bienvenido: " + txt_usuario->Text);
 				
-				CppCLRWinFormsProject::Form1^ form = gcnew CppCLRWinFormsProject::Form1();
-				form->Show();
+				CppCLRWinFormsProject::Form1^ form = gcnew CppCLRWinFormsProject::Form1(); // LLAMAMOS AL FORMULARIO FORM1 //
+				form->Show(); //
 				
 			}
 			else
